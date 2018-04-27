@@ -1,0 +1,22 @@
+<h1 class="text-center">個人資訊的網頁</h1>
+<div class="contanier-fluid">
+
+<table class="table">
+	<tr>
+		<th>姓名:</th>
+		<th>男女(勾為男):</th>
+		<th>生日:</th>
+		<th>手機號碼:</th>
+	</tr>
+	{% for i in people %}
+	<tr>
+		<td>{{ i.name }}</td>
+		<td>{% if i.is_male %} 男生 {% else %} 女生{% endif %}</td>
+		<td>{{ i.birth_date }}</td>
+		<td>{{ i.phone_number }}</td>
+	</tr>
+	{% endfor %}
+</table>
+	
+	
+	
