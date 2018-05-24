@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<title>score_fail_or_not</title>
+	<script>
+		var score;
+
+		function fail(str){
+			score = document.getElementById("score").value;
+			if ((score>=60) && (score<=100)){
+				alert("PASS");
+			} else if (score<60){
+				alert("FAILED");
+			} else {
+				alert("INPUT ERROR");
+			}
+		}
+	</script>
+</head>
+<body>
+    Score:<input type="text" id="score">
+    <input type="button" value="examine" onClick="fail(score)">
+   
+</body>
+</html>

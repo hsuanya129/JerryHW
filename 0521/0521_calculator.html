@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	
+    <style type="text/css">
+        input[type=button]{
+            font-family: '微軟正黑體';
+            font-weight: bold;
+            padding: 4px;
+            width: 30px;
+            height: 30px;
+            border: none;
+            box-shadow: 2px 2px 3px #acacac;
+            cursor: pointer;
+        }
+
+        input[type=text]{
+            font-family: '微軟正黑體';
+            font-weight: bold;
+            padding: 4px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            box-shadow: none;
+            border-bottom: 1px solid #a9a9a9;
+        }
+    </style>
+	<script>
+    
+    var temp=0;  
+    var strOper=0; 
+
+    function numBtn(str) {
+
+        if (strOper==null) {
+            document.getElementById("ansBox").value = str;
+            strOper=0;
+            return;
+        };
+
+       if (document.getElementById("ansBox").value==0) { 
+            document.getElementById("ansBox").value = str;
+        } else {
+        document.getElementById("ansBox").value += str;
+        }
+
+    }
+
+    function operBtn(str){
+
+        equal();
+
+        valueA=document.getElementById("ansBox").value;
+        strOper=str;
+
+        document.getElementById("ansBox").value=0;
+    }
+
+  
+
+    function equal(){   
+        
+        var sum;
+        switch (strOper){
+            case '+':
+                sum=parseFloat(valueA)+parseFloat(document.getElementById("ansBox").value);
+                document.getElementById("ansBox").value=sum
+                break;
+            case '-':
+                sum=parseFloat(valueA)-parseFloat(document.getElementById("ansBox").value);
+                document.getElementById("ansBox").value=sum;
+                break;
+            case '*':
+                sum=parseFloat(valueA)*parseFloat(document.getElementById("ansBox").value);
+                document.getElementById("ansBox").value=sum
+                break;
+            case '/':
+                sum=parseFloat(valueA)/parseFloat(document.getElementById("ansBox").value);
+                document.getElementById("ansBox").value=sum
+                break;
+            case 'c': //clear
+                sum =0;
+                parseFloat(document.getElementById("ansBox").value)=0;
+                break;
+            default:
+                break;
+        }
+
+        temp=null;
+        strOper=null;
+    }
+
+</script> 
+</head>
+<body>
+
+<table >
+    <tr>
+        <td align="center" colspan="6"> 
+            <input align="right" type="text" value="0" id="ansBox"  />
+        </td>
+    </tr>
+
+
+    <tr align="center">
+        <td>    <input  type="button" value="7" onClick="numBtn('7')">  </td>
+        <td>    <input  type="button" value="8" onClick="numBtn('8')">  </td>
+        <td>    <input  type="button" value="9" onClick="numBtn('9')">  </td>
+        <td>    <input  type="button" value="+" onClick="operBtn('+')"> </td>
+    </tr>
+
+    <tr align="center">
+        <td>    <input  type="button" value="4" onClick="numBtn('4')">  </td>
+        <td>    <input  type="button" value="5" onClick="numBtn('5')">  </td>
+        <td>    <input  type="button" value="6" onClick="numBtn('6')">  </td>
+        <td>    <input  type="button" value="-" onClick="operBtn('-')"> </td>
+    </tr>
+
+    <tr align="center">
+        <td>    <input  type="button" value="1" onClick="numBtn('1')">  </td>
+        <td>    <input  type="button" value="2" onClick="numBtn('2')">  </td>
+        <td>    <input  type="button" value="3" onClick="numBtn('3')">  </td>
+        <td>    <input  type="button" value="*" onClick="operBtn('*')"> </td>
+    </tr>
+
+    <tr align="center">
+        <td>    <input  type="button" value="0" onClick="numBtn('0')">  </td>
+        <td>    <input  type="button" value="c" onClick="operBtn('c')">  </td>
+        <td>    <input  type="button" value="=" onClick="equal()">      </td>
+        <td>    <input  type="button" value="/" onClick="operBtn('/')"> </td>
+    </tr>
+</table>
+</body>
+</html>
